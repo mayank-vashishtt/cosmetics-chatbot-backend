@@ -1,196 +1,143 @@
+// server.js
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
-const { MongoClient } = require('mongodb');
 const fs = require('fs');
+const { GoogleGenerativeAI } = require('@google/generative-ai');
+const { MongoClient } = require('mongodb');
 require('dotenv').config();
 
+// Setup
 const app = express();
 const port = process.env.PORT || 3001;
-
-// Middleware
-app.use(cors({
-    origin: 'http://localhost:3000',
-    methods: ['GET', 'POST'],
-    credentials: true
-}));
+app.use(cors());
 app.use(bodyParser.json());
 
-// Load Physics context from JSON with error handling
+// Load Physics context JSON
 let physicsData;
 try {
     const rawData = fs.readFileSync('physics_content.json', 'utf-8');
     physicsData = JSON.parse(rawData);
-    console.log('Physics content loaded successfully');
+    console.log('Physics content loaded with', physicsData.chapters?.length || 0, 'chapters');
 } catch (error) {
-    console.error('Error loading physics content:', error);
+    console.error('Failed to load physics content:', error);
     physicsData = { chapters: [] };
 }
 
-// Ollama API setup
-const OLLAMA_API_URL = 'http://localhost:11434/api/generate';
+// Initialize Gemini SDK
+const genAI = new GoogleGenerativeAI(process.env.GOOGLE_API_KEY);
+const model = genAI.getGenerativeModel({ model: "gemini-1.5-pro" });
 
-// Helper functions
+// Connect to MongoDB
+const mongoClient = new MongoClient(process.env.MONGO_URI);
+let db;
+async function connectMongoDB() {
+    try {
+        await mongoClient.connect();
+        db = mongoClient.db('physics_bot');
+        console.log('Connected to MongoDB');
+    } catch (err) {
+        console.error('MongoDB connection error:', err);
+        process.exit(1);
+    }
+}
+connectMongoDB();
+
+// Util: Find relevant topic
 const findRelevantTopic = (question) => {
     try {
-        if (!physicsData || !physicsData.chapters || !physicsData.chapters[0].topics) {
-            throw new Error('Invalid physics content structure');
-        }
+        const allTopics = physicsData.chapters.flatMap(ch => ch.topics || []);
+        return allTopics.find(topic =>
+            topic.context?.toLowerCase().includes(question.toLowerCase())
+        ) || allTopics[0]; // fallback
+    } catch {
+        return { name: 'Physics', prerequisites: '', context: 'General physics concepts.' };
+    }
+};
 
-        // Get all topics from all chapters
-        const allTopics = physicsData.chapters.flatMap(chapter => chapter.topics);
-        
-        // Find topic with content
-        const relevantTopic = allTopics.find(topic => topic.context && topic.context.length > 0);
-        
-        if (!relevantTopic) {
-            throw new Error('No suitable topic found');
-        }
+// Util: Prepare context for Gemini
+const prepareSystemContext = (history, topic) => `
+You are a helpful Physics teacher. Explain the concept in a clear and concise way.
 
-        return {
-            name: relevantTopic.name || 'Physics Topic',
-            prerequisites: relevantTopic.prerequisites || 'Basic knowledge',
-            context: relevantTopic.context
-        };
-    } catch (error) {
-        console.error('Error finding relevant topic:', error);
-        return {
-            name: 'Physics',
-            prerequisites: 'Basic physics knowledge',
-            context: 'General physics concepts and principles'
-        };
+# Topic: ${topic.name}
+## Prerequisites: ${topic.prerequisites}
+
+### Context:
+${topic.context}
+
+### Guidelines:
+- Format using **Markdown**
+- Use \`code blocks\` for formulas
+- Include real-life examples
+- Use **bold** and *italic* for emphasis
+- Provide step-by-step breakdowns if needed
+
+### Recent Chat:
+${history.map(h => `Student: ${h.user}\nTeacher: ${h.ai}`).join('\n\n')}
+
+Now respond clearly to the following question.
+`;
+
+// MongoDB helpers
+const storeChatHistory = async (user, ai) => {
+    try {
+        await db.collection('chat_history').insertOne({ user, ai, timestamp: new Date() });
+    } catch (err) {
+        console.error('Error storing history:', err);
     }
 };
 
 const getChatHistory = async () => {
-    return []; // Implement MongoDB chat history retrieval here
-};
-
-const storeChatHistory = async (question, response) => {
-    console.log('Storing chat history:', { question, response });
-    // Implement MongoDB storage here
-};
-
-// Prepare AI prompt with structured teaching explanation and Markdown support
-const prepareSystemContext = (chatHistory, topic) => `
-You are a Physics teacher helping students understand concepts with clear and detailed explanations. 
-
-# Current Topic: ${topic.name}
-## Prerequisites: ${topic.prerequisites}
-
-### Context Information:
-${topic.context}
-
-### Guidelines:
-- Format your responses using Markdown for better readability
-- Use \`code blocks\` for mathematical equations and formulas
-- Create numbered lists for step-by-step explanations
-- Use bullet points for key concepts
-- Include examples with real-world applications
-- Break down complex calculations step by step
-- Use bold and italic text for emphasis
-- Create tables when comparing concepts
-
-### Previous Discussion:
-${chatHistory.map(h => `**Student**: ${h.user}\n**Teacher**: ${h.ai}`).join('\n\n')}
-
-Please provide a clear and detailed explanation using proper Markdown formatting.
-`;
-
-// Function to call Ollama API with enhanced error handling
-// Update the generateOllamaResponse function to clean the response
-
-async function generateOllamaResponse(prompt) {
     try {
-        const response = await fetch(OLLAMA_API_URL, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                model: 'deepseek-r1:7b',
-                prompt: prompt,
-                stream: false
-            })
-        });
-
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-        }
-
-        const data = await response.json();
-        if (!data.response) {
-            throw new Error('Invalid response from Ollama API');
-        }
-
-        // Clean the response by removing <think> tags and their content
-        let cleanedResponse = data.response.replace(/<think>[\s\S]*?<\/think>/g, '').trim();
-        
-        // Remove any extra whitespace that might have been left
-        cleanedResponse = cleanedResponse.replace(/\n{3,}/g, '\n\n');
-
-        return cleanedResponse;
-    } catch (error) {
-        console.error('Error calling Ollama API:', error);
-        throw new Error(`Failed to generate response: ${error.message}`);
+        return await db.collection('chat_history').find().sort({ timestamp: -1 }).limit(5).toArray();
+    } catch {
+        return [];
     }
-}
+};
 
-// Routes
-app.get('/health', (req, res) => {
-    res.json({ status: 'ok', timestamp: new Date().toISOString() });
-});
-
+// Route to handle question
 app.post('/api/ask', async (req, res) => {
     try {
         const { question } = req.body;
-        if (!question) {
-            return res.status(400).json({ 
-                success: false, 
-                message: 'Question is required' 
-            });
-        }
+        if (!question) throw new Error("Question is required.");
 
-        console.log('Received question:', question);
+        const topic = findRelevantTopic(question);
+        const history = await getChatHistory();
+        const fullPrompt = `${prepareSystemContext(history, topic)}\nStudent: ${question}\nTeacher:`;
 
-        const relevantTopic = findRelevantTopic(question);
-        const chatHistory = await getChatHistory();
-        const fullPrompt = `${prepareSystemContext(chatHistory, relevantTopic)}\nStudent: ${question}\nTeacher:`;
-
-        console.log('Generating response...');
-        const response = await generateOllamaResponse(fullPrompt);
+        const result = await model.generateContent(fullPrompt);
+        const response = result.response.text();
 
         await storeChatHistory(question, response);
-        res.json({ 
-            success: true, 
-            response, 
-            message: 'Answer generated successfully',
-            topic: relevantTopic.name
+
+        res.json({
+            success: true,
+            response,
+            topic: topic.name,
+            message: "Response generated successfully."
         });
     } catch (error) {
-        console.error('Error processing request:', error);
-        res.status(500).json({ 
-            success: false, 
-            error: error.message, 
-            message: 'Failed to generate response'
-        });
+        console.error('Error generating response:', error);
+        res.status(500).json({ success: false, error: error.message });
     }
 });
 
-// Error handling middleware
-app.use((err, req, res, next) => {
-    console.error('Server Error:', err);
-    res.status(500).json({
-        success: false,
-        message: 'Internal Server Error',
-        error: err.message
-    });
+// Health check
+app.get('/health', (req, res) => {
+    res.json({ status: 'healthy' });
 });
 
 // Start server
-app.listen(port, () => {
-    console.log(`Server running at http://localhost:${port}`);
-    console.log('Ollama API URL:', OLLAMA_API_URL);
-    console.log('Physics content loaded with', 
-        physicsData.chapters?.length || 0, 'chapters');
+const server = app.listen(port, () => {
+    console.log(`Server running on http://localhost:${port}`);
+});
+
+// Graceful shutdown
+process.on('SIGTERM', async () => {
+    console.log('Shutting down...');
+    await mongoClient.close();
+    server.close(() => {
+        console.log('Server closed.');
+        process.exit(0);
+    });
 });
