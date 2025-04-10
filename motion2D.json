@@ -1,0 +1,292 @@
+{
+    "subject": "Physics",
+    "chapters": [
+      {
+        "name": "MOTION IN A PLANE",
+        "prerequisites": "Understanding of motion in straight line, basic mathematics",
+        "topics": [
+          {
+            "name": "INTRODUCTION",
+            "prerequisites": "Basic mathematics",
+            "id": 3.1,
+            "context": "In the last chapter we developed the concepts of position, displacement, velocity and acceleration that are needed to describe the motion of an object along a straight line. We found that the directional aspect of these quantities can be taken care of by + and – signs, as in one dimension only two directions are possible. But in order to describe motion of an object in two dimensions (a plane) or three dimensions (space), we need to use vectors to describe the above-mentioned physical quantities.",
+            "questions": [
+              {
+                "question": "A particle moves in x-y plane according to equation r = (3t²î + 4t³ĵ) meters. Find its speed at t = 2s.",
+                "answer": "Solution:\n1. v = dr/dt = (6tî + 12t²ĵ) m/s\n2. At t = 2s: v = 12î + 48ĵ m/s\n3. Speed = |v| = √(12² + 48²)\n4. = √(144 + 2304) = √2448 ≈ 49.5 m/s"
+              },
+              {
+                "question": "Why can't scalar quantities with signs describe motion in a plane completely?",
+                "answer": "Because:\n1. In a plane, motion can occur in infinite directions\n2. + and - signs can only represent two opposite directions\n3. Need both magnitude and direction information\n4. No way to represent perpendicular components with just scalars\n5. Vector quantities necessary for complete description"
+              },
+              {
+                "question": "A particle's position vector is given by r = (5cos ωt)î + (5sin ωt)ĵ meters. Prove that its path is circular and find its velocity.",
+                "answer": "Solution:\n1. Path equation: (x/5)² + (y/5)² = cos²ωt + sin²ωt = 1\n   This is equation of circle with radius 5m\n2. v = dr/dt = (-5ωsin ωt)î + (5ωcos ωt)ĵ\n3. |v| = 5ω√(sin²ωt + cos²ωt) = 5ω m/s (constant)\n4. Direction changes continuously but speed constant"
+              },
+              {
+                "question": "If r = aî + bt²ĵ represents position vector of a particle, find the angle between velocity and acceleration at any time t.",
+                "answer": "Solution:\n1. v = dr/dt = 0î + 2btĵ\n2. a = dv/dt = 0î + 2bĵ\n3. Angle θ between v and a:\n   cos θ = v·a/(|v||a|)\n   = (0 + 2bt×2b)/(√(0 + 4b²t²)×√(0 + 4b²))\n   = 1\n4. Therefore θ = 0°, velocity and acceleration are parallel"
+              },
+              {
+                "question": "A vector A makes angles α, β, γ with x, y, z axes respectively. Show that cos²α + cos²β + cos²γ = 1.",
+                "answer": "Proof:\n1. Let A = Axî + Ayĵ + Azk̂\n2. |A| = √(Ax² + Ay² + Az²)\n3. cos α = Ax/|A|\n   cos β = Ay/|A|\n   cos γ = Az/|A|\n4. Square and add:\n   cos²α + cos²β + cos²γ\n   = (Ax² + Ay² + Az²)/|A|² = 1"
+              }
+            ]
+          },
+          {
+            "name": "SCALARS AND VECTORS",
+            "prerequisites": "Basic mathematics",
+            "id": 3.2,
+            "context": "In physics, we can classify quantities as scalars or vectors. Basically, the difference is that a direction is associated with a vector but not with a scalar. A scalar quantity is a quantity with magnitude only. It is specified completely by a single number, along with the proper unit. Examples are: the distance between two points, mass of an object, the temperature of a body and the time at which a certain event happened. The rules for combining scalars are the rules of ordinary algebra. Scalars can be added, subtracted, multiplied and divided just as the ordinary numbers.",
+            "questions": [
+              {
+                "question": "Two vectors have equal magnitudes but their sum and difference are perpendicular to each other. Find the angle between the vectors.",
+                "answer": "Let's solve:\n1. Let vectors be A and B with |A| = |B| = a\n2. A + B and A - B are perpendicular\n3. Therefore (A + B)·(A - B) = 0\n4. A·A - A·B + B·A - B·B = 0\n5. 2(a² - A·B) = 0\n6. A·B = a²cos θ = a²/2\n7. Therefore θ = 60°"
+              },
+              {
+                "question": "When can the magnitude of sum of two vectors be equal to the sum of their magnitudes?",
+                "answer": "The magnitude of sum equals sum of magnitudes when:\n1. |A + B| = |A| + |B|\n2. This is only possible when vectors are parallel\n3. And pointing in same direction\n4. Because for any other configuration:\n   |A + B| < |A| + |B| (Triangle inequality)\n5. Exception: Zero vectors"
+              },
+              {
+                "question": "A boy walks 2 km North, then 2 km East and finally 2 km North. Express his displacement in terms of unit vectors.",
+                "answer": "Solution:\n1. First displacement: 2ĵ km\n2. Second displacement: 2î km\n3. Third displacement: 2ĵ km\n4. Total displacement = 2î + 4ĵ km\n5. Magnitude = √(4 + 16) = √20 km\n6. Direction = tan⁻¹(2) = 63.4° with x-axis"
+              },
+              {
+                "question": "Prove that the magnitude of the sum of two vectors cannot exceed the sum of their magnitudes.",
+                "answer": "Proof:\n1. Let A and B be two vectors\n2. |A + B|² = (A + B)·(A + B)\n3. = |A|² + |B|² + 2|A||B|cos θ\n4. ≤ |A|² + |B|² + 2|A||B|\n   (since cos θ ≤ 1)\n5. = (|A| + |B|)²\n6. Therefore |A + B| ≤ |A| + |B|"
+              },
+              {
+                "question": "If three vectors A, B and C form a triangle (head to tail), prove that A + B + C = 0.",
+                "answer": "Proof:\n1. In a triangle formed by vectors:\n   - A leads from first point to second\n   - B from second to third\n   - C from third back to first\n2. Following head to tail:\n   A + B = -C\n3. Therefore: A + B + C = 0\n4. This is also called closed polygon rule\n5. Implies zero displacement in complete circuit"
+              }
+            ]
+          },
+          {
+            "name": "MULTIPLICATION OF VECTORS BY REAL NUMBERS",
+            "prerequisites": "Basic vector concepts",
+            "id": 3.3,
+            "context": "Multiplying a vector A with a positive number λ gives a vector whose magnitude is changed by the factor λ but the direction is the same as that of A: λA = λ|A| if λ > 0. For example, if A is multiplied by 2, the resultant vector 2A is in the same direction as A and has a magnitude twice of |A|. Multiplying a vector A by a negative number −λ gives another vector whose direction is opposite to the direction of A and whose magnitude is λ times |A|. The factor λ by which a vector A is multiplied could be a scalar having its own physical dimension. Then, the dimension of λA is the product of the dimensions of λ and A.",
+            "questions": [
+              {
+                "question": "A vector A = 3î + 4ĵ is multiplied by a scalar k such that the resulting vector has magnitude 35 units. Find the possible values of k.",
+                "answer": "Solution:\n1. Given A = 3î + 4ĵ\n2. |A| = √(3² + 4²) = 5\n3. |kA| = |k||A| = 35\n4. |k|×5 = 35\n5. |k| = 7\n6. Therefore k = +7 or -7"
+              },
+              {
+                "question": "If vector A is multiplied by -2 and vector B is multiplied by 1/2, under what condition will the resulting vectors be equal in magnitude but opposite in direction?",
+                "answer": "Analysis:\n1. Let's say |-2A| = |½B|\n2. 2|A| = ½|B|\n3. |B| = 4|A|\n4. Therefore, vector B must have 4 times the magnitude of vector A\n5. No condition needed for direction as -2A and ½B are automatically opposite due to negative multiplication"
+              },
+              {
+                "question": "A particle moving with velocity v is acted upon by a force F = mv where m is its mass. If m is doubled and v is halved, what happens to the magnitude and direction of F?",
+                "answer": "Analysis:\n1. Initial force F₁ = m₁v₁\n2. Final force F₂ = m₂v₂\n   where m₂ = 2m₁ and v₂ = ½v₁\n3. F₂ = (2m₁)(½v₁) = m₁v₁ = F₁\n4. Therefore:\n   - Magnitude remains same\n   - Direction remains unchanged\n   - F₂ = F₁"
+              },
+              {
+                "question": "If λ₁A + λ₂A = 0, where A is a non-zero vector and λ₁, λ₂ are scalars, prove that λ₁ = -λ₂.",
+                "answer": "Proof:\n1. Given λ₁A + λ₂A = 0\n2. (λ₁ + λ₂)A = 0\n3. Since A ≠ 0:\n   - Either λ₁ + λ₂ = 0\n   - Or A = 0 (given not true)\n4. Therefore λ₁ + λ₂ = 0\n5. λ₁ = -λ₂"
+              },
+              {
+                "question": "A vector A when multiplied by a scalar k gives a vector perpendicular to A. What can you say about k?",
+                "answer": "This is impossible because:\n1. When a vector is multiplied by a scalar k:\n   - It either maintains same direction (k > 0)\n   - Or reverses direction (k < 0)\n   - Or becomes zero (k = 0)\n2. Scalar multiplication cannot rotate a vector\n3. Therefore, no real value of k can make kA perpendicular to A"
+              }
+            ]
+          },
+          {
+            "name": "ADDITION AND SUBTRACTION OF VECTORS - GRAPHICAL METHOD",
+            "prerequisites": "Basic vector concepts, geometry",
+            "id": 3.4,
+            "context": "As mentioned in section 4.2, vectors, by definition, obey the triangle law or equivalently, the parallelogram law of addition. We shall now describe this law of addition using the graphical method. Let us consider two vectors A and B that lie in a plane as shown in Fig. 3.4(a). The lengths of the line segments representing these vectors are proportional to the magnitude of the vectors. To find the sum A + B, we place vector B so that its tail is at the head of the vector A, as in Fig. 3.4(b). Then, we join the tail of A to the head of B. This line OQ represents a vector R, that is, the sum of the vectors A and B.",
+            "questions": [
+              {
+                "question": "Two equal vectors have magnitude 5 units each. Find the magnitude of their resultant for angles of separation: (i) 0° (ii) 60° (iii) 120° (iv) 180°",
+                "answer": "Using R² = A² + B² + 2AB cos θ:\n1. For θ = 0°: R = √(25 + 25 + 2×5×5×1) = 10 units\n2. For θ = 60°: R = √(50 + 50×0.5) = √75 = 8.66 units\n3. For θ = 120°: R = √(50 - 50×0.5) = 5 units\n4. For θ = 180°: R = √(50 - 50) = 0 units"
+              },
+              {
+                "question": "Three vectors A, B and C form a right triangle ABC. If |A| = 3 units, |B| = 4 units, find |A + B + C|.",
+                "answer": "Solution:\n1. Since vectors form right triangle:\n   C = -(A + B)\n2. Therefore, A + B + C = 0\n3. |A + B + C| = 0 units\nThis illustrates the polygon law of vector addition."
+              },
+              {
+                "question": "Vector A makes angle α with x-axis and vector B makes angle β with x-axis. Under what conditions will |A + B| = |A| + |B|?",
+                "answer": "Analysis:\n1. |A + B| = |A| + |B| only when vectors are parallel and in same direction\n2. Therefore α = β\n3. This is because:\n   |A + B|² = |A|² + |B|² + 2|A||B|cos(α-β)\n4. For maximum value: cos(α-β) = 1\n5. Therefore α - β = 0° or α = β"
+              },
+              {
+                "question": "Show that for any triangle formed by three vectors a, b, and c, we have a + b + c = 0.",
+                "answer": "Proof:\n1. In a triangle formed by vectors:\n   - Vector a leads from first point to second\n   - Vector b from second to third\n   - Vector c from third back to first\n2. Following head to tail method:\n   - Start at any vertex\n   - Traverse complete triangle\n   - Return to starting point\n3. Therefore a + b + c = 0 (closed polygon rule)"
+              },
+              {
+                "question": "Two vectors of magnitudes 8 and 6 units have a resultant of magnitude 10 units. Find the angle between them.",
+                "answer": "Solution:\n1. Using law of cosines:\n   10² = 8² + 6² + 2(8)(6)cos θ\n2. 100 = 64 + 36 + 96cos θ\n3. 100 - 100 = 96cos θ\n4. cos θ = 0\n5. Therefore θ = 90°\nThe vectors are perpendicular to each other."
+              }
+            ]
+          },
+          {
+            "name": "RESOLUTION OF VECTORS",
+            "prerequisites": "Vector addition, trigonometry",
+            "id": 3.5,
+            "context": "Let a and b be any two non-zero vectors in a plane with different directions and let A be another vector in the same plane. A can be expressed as a sum of two vectors — one obtained by multiplying a by a real number and the other obtained by multiplying b by another real number. To see this, let O and P be the tail and head of the vector A. Then, through O, draw a straight line parallel to a, and through P, a straight line parallel to b. Let them intersect at Q. Then, we have A = OP = OQ + QP where OQ = λa and QP = µb where λ and µ are real numbers. Therefore, A = λa + µb",
+            "questions": [
+              {
+                "question": "A vector A = 3î + 4ĵ + 5k̂ makes angles α, β, and γ with x, y, and z axes respectively. Find cos α, cos β, and cos γ.",
+                "answer": "Solution:\n1. For a vector with components (Ax, Ay, Az)\nDirection cosines are:\ncos α = Ax/|A|\ncos β = Ay/|A|\ncos γ = Az/|A|\n2. |A| = √(3² + 4² + 5²) = √50\n3. Therefore:\ncos α = 3/√50 = 0.424\ncos β = 4/√50 = 0.566\ncos γ = 5/√50 = 0.707"
+              },
+              {
+                "question": "Two forces F1 = 3î - 4ĵ and F2 = -î + 2ĵ act on a particle. Find the magnitude and direction of the resultant force if a third force F3 = -2î + 2ĵ is also acting.",
+                "answer": "Solution:\n1. Resultant FR = F1 + F2 + F3\n2. FR = (3-1-2)î + (-4+2+2)ĵ\n3. FR = 0î + 0ĵ\n4. |FR| = 0\n5. Direction undefined as resultant is zero vector\nPhysical meaning: Forces are in equilibrium"
+              },
+              {
+                "question": "If |A + B| = |A| + |B|, prove that A and B must be parallel and in same direction.",
+                "answer": "Proof:\n1. Given: |A + B| = |A| + |B|\n2. Square both sides:\n   |A + B|² = (|A| + |B|)²\n3. A·A + B·B + 2A·B = |A|² + |B|² + 2|A||B|\n4. Since A·B = |A||B|cos θ\n5. |A||B|cos θ = |A||B|\n6. Therefore cos θ = 1\n7. Thus θ = 0°, vectors are parallel and same direction"
+              },
+              {
+                "question": "A vector of magnitude 10 units makes angles of 60°, 45°, and θ with x, y, and z axes respectively. Find θ.",
+                "answer": "Solution:\n1. Using direction cosines relation:\ncos²α + cos²β + cos²γ = 1\n2. Given:\ncos 60° = 1/2\ncos 45° = 1/√2\ncos θ = ?\n3. Substitute:\n(1/2)² + (1/√2)² + cos²θ = 1\n4. 1/4 + 1/2 + cos²θ = 1\n5. cos²θ = 1/4\n6. θ = cos⁻¹(1/2) = 60°"
+              },
+              {
+                "question": "A vector P = 2î - ĵ + 3k̂ is rotated by 90° about y-axis. Find the resultant vector.",
+                "answer": "Solution:\n1. When vector rotates 90° about y-axis:\n   x-component becomes z-component\n   z-component becomes -x-component\n   y-component remains unchanged\n2. Initial P = 2î - ĵ + 3k̂\n3. After rotation:\n   New x-component = -3\n   New y-component = -1\n   New z-component = 2\n4. Therefore P' = -3î - ĵ + 2k̂"
+              }
+            ]
+          },
+          {
+            "name": "VECTOR ADDITION - ANALYTICAL METHOD",
+            "prerequisites": "Vector components, resolution of vectors",
+            "id": 3.6,
+            "context": "Although the graphical method of adding vectors helps us in visualising the vectors and the resultant vector, it is sometimes tedious and has limited accuracy. It is much easier to add vectors by combining their respective components. Consider two vectors A and B in x-y plane with components Ax, Ay and Bx, By: A = Axî + Ayĵ and B = Bxî + Byĵ. Let R be their sum. We have R = A + B = (Ax + Bx)î + (Ay + By)ĵ. Thus, each component of the resultant vector R is the sum of the corresponding components of A and B.",
+            "questions": [
+              {
+                "question": "Three vectors are given: A = 2î + 3ĵ, B = -î + 2ĵ, and C = 3î - ĵ. Find the magnitude and direction of R = A + B - C.",
+                "answer": "Solution:\n1. R = A + B - C\n2. R = (2î + 3ĵ) + (-î + 2ĵ) - (3î - ĵ)\n3. = (2-1-3)î + (3+2+1)ĵ\n4. = -2î + 6ĵ\n5. |R| = √((-2)² + 6²) = √40 = 6.32 units\n6. Direction: θ = tan⁻¹(6/-2) = 108.4° with +x axis"
+              },
+              {
+                "question": "Show that the magnitude of sum of n vectors with equal magnitude A and making equal angles with each other in a plane is nA cos(θ/2), where θ = 360°/n.",
+                "answer": "Proof:\n1. Each vector makes angle θ = 360°/n with next vector\n2. Using complex number method:\n   Sum = A + Aeiθ + Aei2θ + ... + Aei(n-1)θ\n3. This is geometric series with r = eiθ\n4. Sum = A(1-einθ)/(1-eiθ)\n5. |Sum| = |A||(1-einθ)/(1-eiθ)|\n6. Simplifies to nA cos(θ/2)"
+              },
+              {
+                "question": "Given vectors P = î - 2ĵ and Q = 3î + 4ĵ, find a vector R such that P + R = λQ where λ is a scalar.",
+                "answer": "Method:\n1. Since P + R = λQ\n2. R = λQ - P\n3. In component form:\n   R = (3λ-1)î + (4λ+2)ĵ\n4. For R to exist:\n   - λ can be any real number\n   - R = [(3λ-1)² + (4λ+2)²]½\n5. This represents a family of vectors"
+              },
+              {
+                "question": "If A and B are two non-zero vectors such that |A + B| = |A - B|, prove that A and B are perpendicular.",
+                "answer": "Proof:\n1. |A + B|² = |A - B|²\n2. (A + B)·(A + B) = (A - B)·(A - B)\n3. A·A + 2A·B + B·B = A·A - 2A·B + B·B\n4. 4A·B = 0\n5. Therefore A·B = 0\n6. Hence A ⊥ B"
+              },
+              {
+                "question": "A particle's position vector is given by r = (t²î + 2tĵ) meters. Find its velocity and acceleration vectors at t = 2s.",
+                "answer": "Solution:\n1. Velocity v = dr/dt = (2tî + 2ĵ) m/s\n2. At t = 2s:\n   v = 4î + 2ĵ m/s\n   |v| = √20 m/s\n3. Acceleration a = dv/dt = 2î + 0ĵ m/s²\n4. At t = 2s:\n   a = 2î m/s²\n   |a| = 2 m/s²"
+              }
+            ]
+          },
+          {
+            "name": "MOTION IN A PLANE",
+            "prerequisites": "Vector algebra, kinematics",
+            "id": 3.7,
+            "context": "In this section we shall see how to describe motion in two dimensions using vectors. The position vector r of a particle P located in a plane with reference to the origin of an x-y reference frame is given by r = xî + yĵ where x and y are components of r along x-, and y- axes or simply they are the coordinates of the object. Suppose a particle moves along the curve and is at P at time t and P′ at time t′. Then, the displacement is: Δr = r′ – r.",
+            "questions": [
+              {
+                "question": "A particle moves in a plane such that its position vector is given by r = (2t²î + 3t³ĵ) meters. Find: \na) Velocity vector at time t \nb) Acceleration vector at time t \nc) Speed at t = 2s",
+                "answer": "Solution:\n1. Velocity v = dr/dt\n   = (4tî + 9t²ĵ) m/s\n2. Acceleration a = dv/dt\n   = (4î + 18tĵ) m/s²\n3. At t = 2s:\n   v = (8î + 36ĵ) m/s\n   Speed = √(8² + 36²) = √1360 = 36.9 m/s"
+              },
+              {
+                "question": "A projectile is fired with velocity v₀ at angle θ with horizontal. Show that its trajectory is a parabola y = x tan θ - (gx²/2v₀²cos²θ)",
+                "answer": "Proof:\n1. Initial components:\n   v₀x = v₀cos θ\n   v₀y = v₀sin θ\n2. Using equations of motion:\n   x = v₀xtemp\n   y = v₀yt - (1/2)gt²\n3. Eliminate t using x = v₀cos θ t:\n   t = x/(v₀cos θ)\n4. Substitute in y equation:\n   y = x tan θ - (gx²/2v₀²cos²θ)"
+              },
+              {
+                "question": "A particle moves in x-y plane according to equations x = acos(ωt) and y = asin(ωt). Prove that:\na) Motion is circular\nb) Particle has constant speed\nc) Acceleration is directed towards center",
+                "answer": "Solution:\n1. For circular motion:\n   (x/a)² + (y/a)² = cos²(ωt) + sin²(ωt) = 1\n2. Velocity components:\n   vx = -aωsin(ωt)\n   vy = aωcos(ωt)\n   Speed = √(vx² + vy²) = aω (constant)\n3. Acceleration:\n   ax = -aω²cos(ωt) = -ω²x\n   ay = -aω²sin(ωt) = -ω²y\n   a = -ω²r (towards center)"
+              },
+              {
+                "question": "A particle starts from origin at t = 0 with velocity v = (3î + 4ĵ) m/s and has constant acceleration a = (2î - ĵ) m/s². Find:\na) Position vector at any time t\nb) Path equation by eliminating t",
+                "answer": "Solution:\n1. Position vector:\n   r = r₀ + v₀t + (1/2)at²\n   = (3t + t²)î + (4t - 0.5t²)ĵ meters\n2. Path equation:\n   Eliminate t between x and y\n   x = 3t + t²\n   y = 4t - 0.5t²\n   Therefore: y = 4x/3 - 2x²/3"
+              },
+              {
+                "question": "A particle's velocity varies as v = (2tî + 3t²ĵ) m/s. If at t = 0, position vector is r = (2î - ĵ) m, find:\na) Position vector at any time t\nb) Distance traveled in first 2 seconds",
+                "answer": "Solution:\n1. Position vector:\n   r = r₀ + ∫v dt\n   = (2î - ĵ) + ∫(2tî + 3t²ĵ)dt\n   = (t² + 2)î + (t³ - 1)ĵ meters\n2. For distance:\n   v = √((2t)² + (3t²)²)\n   Distance = ∫₀² √(4t² + 9t⁴)dt\n   ≈ 7.51 meters (by numerical integration)"
+              }
+            ]
+          },
+          {
+            "name": "MOTION IN A PLANE WITH CONSTANT ACCELERATION",
+            "prerequisites": "Vector addition, kinematics",
+            "id": 3.8,
+            "context": "When acceleration is constant, equations of motion in a plane can be treated by considering motion along x and y directions independently. Each component follows equations similar to motion in one dimension under constant acceleration.",
+            "questions": [
+              {
+                "question": "A particle is projected with velocity v₀ at angle θ with horizontal. Derive expressions for:\na) Time of flight\nb) Maximum height\nc) Horizontal range",
+                "answer": "Solution:\n1. Initial velocity components:\n   v₀x = v₀cos θ\n   v₀y = v₀sin θ\n2. Using y = v₀yt - (1/2)gt²\n   At max height: t = v₀sin θ/g\n   hmax = v₀²sin²θ/2g\n3. For time of flight:\n   0 = v₀sin θ T - (1/2)gT²\n   T = 2v₀sin θ/g\n4. Range R = v₀cos θ × T\n   = (v₀²sin 2θ)/g"
+              },
+              {
+                "question": "A particle starts from origin with velocity (3î + 4ĵ) m/s and has constant acceleration (2î - ĵ) m/s². Find:\na) The path equation\nb) Position after 2 seconds",
+                "answer": "Solution:\n1. Using r = r₀ + v₀t + (1/2)at²\n2. x = 3t + t²\n   y = 4t - 0.5t²\n3. Path equation:\n   Eliminate t:\n   y = 4(x/3 + t²/3) - 0.5t²\n   y = 4x/3 + (7/6)t²\n4. At t = 2s:\n   x = 3(2) + 4 = 10m\n   y = 4(2) - 2 = 6m\n   r = 10î + 6ĵ meters"
+              },
+              {
+                "question": "Two particles are thrown simultaneously from the same point with same speed v₀ but at angles θ and (90° - θ). Show that their trajectories are mutually perpendicular at the point of intersection.",
+                "answer": "Proof:\n1. For first particle (angle θ):\n   dy₁/dx₁ = tan θ - (gx₁)/(v₀²cos²θ)\n2. For second particle (angle 90°-θ):\n   dy₂/dx₂ = cot θ - (gx₂)/(v₀²sin²θ)\n3. At intersection:\n   x₁ = x₂ and y₁ = y₂\n4. Product of slopes = -1\n   (dy₁/dx₁)(dy₂/dx₂) = -1\n5. Therefore paths are perpendicular"
+              },
+              {
+                "question": "A ball is thrown horizontally from height h with speed v₀. Another ball is dropped from height 4h at the same instant. Find the distance between them after time t.",
+                "answer": "Analysis:\n1. For first ball:\n   x₁ = v₀t\n   y₁ = h - (1/2)gt²\n2. For second ball:\n   x₂ = 0\n   y₂ = 4h - (1/2)gt²\n3. Distance = √[(x₁-x₂)² + (y₁-y₂)²]\n   = √(v₀²t² + 9h²)\n4. Note: Distance increases with time"
+              },
+              {
+                "question": "A projectile is fired from ground level with speed v₀ at angle θ. Find the equation of its trajectory in parametric form and show it's a parabola.",
+                "answer": "Solution:\n1. Initial components:\n   v₀x = v₀cos θ\n   v₀y = v₀sin θ\n2. Parametric equations:\n   x = v₀cos θ t\n   y = v₀sin θ t - (1/2)gt²\n3. Eliminate t using x:\n   t = x/(v₀cos θ)\n4. Substitute in y:\n   y = x tan θ - (gx²)/(2v₀²cos²θ)\n5. This is equation of parabola\n   y = ax - bx², where\n   a = tan θ\n   b = g/(2v₀²cos²θ)"
+              }
+            ]
+          },
+          {
+            "name": "PROJECTILE MOTION",
+            "prerequisites": "Motion in a plane with constant acceleration, vectors",
+            "id": 3.9,
+            "context": "When an object is thrown obliquely near the earth's surface, it moves in a plane under the constant acceleration due to gravity (g). The path followed by such an object is called a projectile motion. If we neglect air resistance, the influence of earth's rotation and the curvature of the earth etc., the motion becomes very simple to analyse.",
+            "questions": [
+              {
+                "question": "A projectile is fired from ground with velocity v₀ at angle θ with horizontal. Show that:\na) Maximum height = v₀²sin²θ/2g\nb) Range = v₀²sin2θ/g\nc) Time of flight = 2v₀sinθ/g",
+                "answer": "Solution:\n1. Initial components:\n   v₀x = v₀cosθ (constant)\n   v₀y = v₀sinθ\n\n2. For max height (vy = 0):\n   0 = v₀sinθ - gt\n   t = v₀sinθ/g\n   hmax = v₀sinθt - (1/2)gt²\n   = v₀²sin²θ/2g\n\n3. For range (y = 0):\n   0 = v₀sinθt - (1/2)gt²\n   t = 2v₀sinθ/g\n   R = v₀cosθ × t\n   = v₀²sin2θ/g"
+              },
+              {
+                "question": "A stone is thrown horizontally with speed u from height h. Find the equation of its trajectory and show it's a parabola.",
+                "answer": "Analysis:\n1. Initial conditions:\n   v₀x = u\n   v₀y = 0\n   x₀ = 0, y₀ = h\n\n2. Equations of motion:\n   x = ut\n   y = h - (1/2)gt²\n\n3. Eliminate t:\n   t = x/u\n   y = h - (g/2u²)x²\n\n4. This is a parabola with:\n   - Axis vertical\n   - Opens downward\n   - Vertex at (0,h)"
+              },
+              {
+                "question": "Two particles are projected simultaneously from same point with same speed v₀ but at angles (90° + α) and (90° - α) with horizontal. Prove that their paths intersect at the highest point of the particle projected at (90° - α).",
+                "answer": "Proof:\n1. For particle 1 (90° + α):\n   x₁ = v₀cos(90°+α)t = -v₀sinαt\n   y₁ = v₀sin(90°+α)t - (1/2)gt²\n   = v₀cosαt - (1/2)gt²\n\n2. For particle 2 (90° - α):\n   x₂ = v₀cos(90°-α)t = v₀sinαt\n   y₂ = v₀sin(90°-α)t - (1/2)gt²\n   = v₀cosαt - (1/2)gt²\n\n3. At intersection:\n   y₁ = y₂ (satisfied)\n   x₁ = -x₂ (symmetrical about vertical)\n\n4. Height matches max height of particle 2"
+              },
+              {
+                "question": "A particle is projected with speed v₀ at angle θ. Find the angle between velocity vectors at the point of projection and point of landing.",
+                "answer": "Solution:\n1. At projection:\n   v₁ = v₀cosθî + v₀sinθĵ\n\n2. At landing (t = 2v₀sinθ/g):\n   v₂x = v₀cosθ\n   v₂y = v₀sinθ - gt = -v₀sinθ\n   v₂ = v₀cosθî - v₀sinθĵ\n\n3. Angle φ between v₁ and v₂:\n   cos φ = v₁·v₂/|v₁||v₂|\n   = (v₀²cos²θ - v₀²sin²θ)/v₀²\n   = cos2θ\n\n4. Therefore φ = 2θ"
+              },
+              {
+                "question": "In projectile motion, prove that the velocity vector at any instant is parallel to the radius vector drawn from the focus of the parabolic path to that point.",
+                "answer": "Proof:\n1. Choose origin at point of projection\n2. Equation of path:\n   y = (tanθ)x - (g/2v₀²cos²θ)x²\n\n3. Focus coordinates:\n   (v₀²cos²θ/2g, v₀²sin2θ/4g)\n\n4. At any point (x,y):\n   Velocity components:\n   vx = v₀cosθ\n   vy = v₀sinθ - gt\n\n5. Radius vector from focus r:\n   Parallel to velocity vector\n   (Can be proved using differentiation)"
+              }
+            ]
+          },
+          {
+            "name": "UNIFORM CIRCULAR MOTION",
+            "prerequisites": "Vector analysis, kinematics",
+            "id": 3.10,
+            "context": "When an object moves in a circular path with constant speed, the motion is called uniform circular motion. While the speed is constant, velocity is changing continuously in direction. Therefore acceleration is present. This acceleration is called centripetal acceleration as it is directed towards the center of the circle.",
+            "questions": [
+              {
+                "question": "A particle moves in a circle of radius R with constant speed v. Show that its acceleration is v²/R towards the center.",
+                "answer": "Solution:\n1. Position vector: r = R cos ωt î + R sin ωt ĵ\n2. Velocity: v = dr/dt = -Rω sin ωt î + Rω cos ωt ĵ\n3. Speed = |v| = Rω = v (constant)\n4. Acceleration: a = dv/dt = -Rω² cos ωt î - Rω² sin ωt ĵ\n5. a = -ω²r = -(v²/R)r̂\nTherefore, acceleration = v²/R towards center"
+              },
+              {
+                "question": "A car moves on a circular track of radius 100m. If its speed is 36 km/h, find:\na) Angular velocity\nb) Centripetal acceleration\nc) Time period",
+                "answer": "Solution:\n1. Speed v = 36 km/h = 10 m/s\n2. Angular velocity ω = v/R\n   = 10/100 = 0.1 rad/s\n3. Centripetal acceleration a = v²/R\n   = 100/100 = 1 m/s²\n4. Time period T = 2πR/v\n   = 2π×100/10 = 62.8 s"
+              },
+              {
+                "question": "Show that in uniform circular motion, the average velocity over one complete revolution is zero but average speed is not.",
+                "answer": "Proof:\n1. For velocity:\n   - Initial and final positions same\n   - Therefore displacement = 0\n   - Average velocity = displacement/time = 0\n2. For speed:\n   - Distance = circumference = 2πR\n   - Time = T = 2πR/v\n   - Average speed = distance/time = v\n   (non-zero and constant)"
+              },
+              {
+                "question": "A particle moves in a circle of radius R with constant speed. If its velocity vector rotates at angular speed ω, prove that the magnitude of its acceleration is Rω².",
+                "answer": "Proof:\n1. Position: r = R cos θ î + R sin θ ĵ\n   where θ = ωt\n2. Velocity: v = -Rω sin θ î + Rω cos θ ĵ\n3. Acceleration: a = -Rω² cos θ î - Rω² sin θ ĵ\n4. |a| = √[(Rω²)² + (Rω²)²]\n   = Rω² √(cos²θ + sin²θ)\n   = Rω²"
+              },
+              {
+                "question": "A stone tied to a string is whirled in a horizontal circle. If the string breaks, what will be the direction of stone's motion? Explain using Newton's laws.",
+                "answer": "Analysis:\n1. During circular motion:\n   - Tension provides centripetal force\n   - Velocity is tangential\n2. When string breaks:\n   - No more centripetal force\n   - By Newton's First Law:\n     * Object continues in straight line\n     * Along tangent at point of release\n3. Direction is tangential to circle at breaking point"
+              }
+            ]
+          }
+
+        ]
+      }
+    ]
+  }

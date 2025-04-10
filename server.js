@@ -1,4 +1,3 @@
-// server.js
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
@@ -23,6 +22,36 @@ try {
     console.error('Failed to load physics content:', error);
     physicsData = { chapters: [] };
 }
+
+// Load motion1D.json
+let motion1DData;
+try {
+    const rawData1D = fs.readFileSync('motion1D.json', 'utf-8');
+    motion1DData = JSON.parse(rawData1D);
+    console.log('Motion1D content loaded with', motion1DData.chapters?.length || 0, 'chapters');
+} catch (error) {
+    console.error('Failed to load motion1D content:', error);
+    motion1DData = { chapters: [] };
+}
+
+// Load motion2D.json
+let motion2DData;
+try {
+    const rawData2D = fs.readFileSync('motion2D.json', 'utf-8');
+    motion2DData = JSON.parse(rawData2D);
+    console.log('Motion2D content loaded with', motion2DData.chapters?.length || 0, 'chapters');
+} catch (error) {
+    console.error('Failed to load motion2D content:', error);
+    motion2DData = { chapters: [] };
+}
+
+// Merge all chapters for unified search
+const allChapters = [
+    ...(physicsData.chapters || []),
+    ...(motion1DData.chapters || []),
+    ...(motion2DData.chapters || [])
+];
+physicsData.chapters = allChapters;
 
 // Initialize Gemini SDK
 const genAI = new GoogleGenerativeAI(process.env.GOOGLE_API_KEY);
@@ -49,7 +78,7 @@ const findRelevantTopic = (question) => {
         const allTopics = physicsData.chapters.flatMap(ch => ch.topics || []);
         return allTopics.find(topic =>
             topic.context?.toLowerCase().includes(question.toLowerCase())
-        ) || allTopics[0]; // fallback
+        ) || { name: 'Physics', prerequisites: '', context: 'General physics concepts.' };
     } catch {
         return { name: 'Physics', prerequisites: '', context: 'General physics concepts.' };
     }
@@ -57,7 +86,7 @@ const findRelevantTopic = (question) => {
 
 // Util: Prepare context for Gemini
 const prepareSystemContext = (history, topic) => `
-You are a helpful Physics teacher. Explain the concept in a clear and concise way.
+You are a helpful Physics teacher. Provide **thorough and easy-to-follow** explanations.
 
 # Topic: ${topic.name}
 ## Prerequisites: ${topic.prerequisites}
@@ -68,9 +97,10 @@ ${topic.context}
 ### Guidelines:
 - Format using **Markdown**
 - Use \`code blocks\` for formulas
-- Include real-life examples
-- Use **bold** and *italic* for emphasis
-- Provide step-by-step breakdowns if needed
+- Include **real-life examples** and step-by-step details
+- Focus on clarity to help students understand thoroughly
+- Use **bold** and *italic* texts for emphasis
+- Offer more insight than typical short responses
 
 ### Recent Chat:
 ${history.map(h => `Student: ${h.user}\nTeacher: ${h.ai}`).join('\n\n')}

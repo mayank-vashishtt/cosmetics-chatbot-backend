@@ -1,0 +1,171 @@
+{
+    "subject": "Physics",
+    "chapters": [
+      {
+        "name": "MOTION IN A STRAIGHT LINE",
+        "prerequisites": "Basic knowledge of mathematics and physics fundamentals",
+        "topics": [
+          {
+            "name": "INTRODUCTION TO MOTION",
+            "prerequisites": "Basic mathematics",
+            "id": 2.1,
+            "context": "Motion is common to everything in the universe. We walk, run and ride a bicycle. Even when we are sleeping, air moves into and out of our lungs and blood flows in arteries and veins. We see leaves falling from trees and water flowing down a dam. Automobiles and planes carry people from one place to the other. The earth rotates once every twenty-four hours and revolves round the sun once in a year. The sun itself is in motion in the Milky Way, which is again moving within its local group of galaxies. Motion is change in position of an object with time.",
+            "questions": [
+              {
+                "question": "What is the definition of motion?",
+                "answer": "Motion is defined as the change in position of an object with respect to time."
+              },
+              {
+                "question": "Give three examples of motion from everyday life.",
+                "answer": "Examples include: walking and running, blood flowing in arteries and veins, leaves falling from trees, and water flowing down a dam."
+              },
+              {
+                "question": "What type of motion does the Earth exhibit?",
+                "answer": "The Earth exhibits two types of motion: rotation about its axis once every 24 hours and revolution around the Sun once every year."
+              },
+              {
+                "question": "What is rectilinear motion?",
+                "answer": "Rectilinear motion is the motion of objects along a straight line."
+              },
+              {
+                "question": "When can we treat objects as point objects in motion?",
+                "answer": "Objects can be treated as point objects when their size is much smaller than the distance they move in a reasonable duration of time."
+              },
+              {
+                "question": "What is Kinematics?",
+                "answer": "Kinematics is the study of ways to describe motion without considering the causes of motion."
+              }
+            ]
+          },
+          {
+            "name": "INSTANTANEOUS VELOCITY AND SPEED",
+            "prerequisites": "Understanding of basic motion concepts",
+            "id": 2.2,
+            "context": "Instantaneous velocity is a fundamental concept in motion that describes the velocity of an object at a specific instant of time. It differs from average velocity which measures the overall rate of position change over a time interval.",
+            "questions": [
+              {
+                "question": "What is instantaneous velocity?",
+                "answer": "Instantaneous velocity is the velocity of an object at a specific instant of time, defined as the limit of average velocity as the time interval approaches zero."
+              },
+              {
+                "question": "How does instantaneous velocity differ from average velocity?",
+                "answer": "Instantaneous velocity represents the velocity at a specific moment, while average velocity represents the overall rate of displacement over a finite time interval."
+              },
+              {
+                "question": "What is the relationship between speed and velocity?",
+                "answer": "Speed is the magnitude of velocity. While velocity is a vector quantity having both magnitude and direction, speed is a scalar quantity having only magnitude."
+              },
+              {
+                "question": "Can instantaneous speed be different from the magnitude of instantaneous velocity?",
+                "answer": "No, instantaneous speed is always equal to the magnitude of instantaneous velocity at any given instant."
+              },
+              {
+                "question": "What are the SI units of velocity and speed?",
+                "answer": "Both velocity and speed are measured in meters per second (m/s) in the SI system."
+              },
+              {
+                "question": "When is instantaneous velocity zero?",
+                "answer": "Instantaneous velocity is zero at the moment when an object is momentarily at rest, such as at the highest point of a vertically thrown object."
+              }
+            ]
+          },
+          {
+            "name": "ACCELERATION",
+            "prerequisites": "Understanding of velocity and speed",
+            "id": 2.3,
+            "context": "Acceleration is the rate of change of velocity with respect to time. It describes how quickly the velocity of an object changes.",
+            "questions": [
+              {
+                "question": "What is acceleration?",
+                "answer": "Acceleration is the rate of change of velocity with respect to time. It measures how quickly an object's velocity changes."
+              },
+              {
+                "question": "What are the SI units of acceleration?",
+                "answer": "The SI unit of acceleration is meters per second squared (m/s²)."
+              },
+              {
+                "question": "Can an object have constant speed but still be accelerating?",
+                "answer": "Yes, if an object is moving in a circular path at constant speed, it is still accelerating because its velocity (which includes direction) is constantly changing."
+              },
+              {
+                "question": "What is deceleration?",
+                "answer": "Deceleration is negative acceleration, where the velocity decreases with time."
+              },
+              {
+                "question": "What is the acceleration due to gravity on Earth?",
+                "answer": "The acceleration due to gravity on Earth is approximately 9.8 m/s² downward."
+              },
+              {
+                "question": "When is acceleration zero?",
+                "answer": "Acceleration is zero when an object moves with constant velocity (both constant speed and direction)."
+              }
+            ]
+          },
+          {
+            "name": "KINEMATIC EQUATIONS FOR UNIFORMLY ACCELERATED MOTION",
+            "prerequisites": "Understanding of velocity and acceleration",
+            "id": 2.4,
+            "context": "Kinematic equations describe the motion of objects under constant acceleration. These equations relate displacement, initial velocity, final velocity, acceleration, and time.",
+            "questions": [
+              {
+                "question": "What are the three basic kinematic equations for uniform acceleration?",
+                "answer": "1) v = u + at\n2) s = ut + (1/2)at²\n3) v² = u² + 2as\nwhere v is final velocity, u is initial velocity, a is acceleration, t is time, and s is displacement."
+              },
+              {
+                "question": "When can these equations be used?",
+                "answer": "These equations can only be used when acceleration is constant throughout the motion."
+              },
+              {
+                "question": "What is the significance of the equation v = u + at?",
+                "answer": "This equation shows that velocity changes linearly with time under constant acceleration."
+              },
+              {
+                "question": "How is the equation s = ut + (1/2)at² derived?",
+                "answer": "This equation is derived by integrating the velocity-time equation and represents the displacement as a function of time under constant acceleration."
+              },
+              {
+                "question": "What does v² = u² + 2as tell us?",
+                "answer": "This equation relates final and initial velocities to displacement and acceleration, without explicitly involving time."
+              },
+              {
+                "question": "Why are these equations important in physics?",
+                "answer": "These equations are fundamental tools for solving problems involving motion under constant acceleration, such as free fall and projectile motion."
+              }
+            ]
+          },
+          {
+            "name": "RELATIVE VELOCITY",
+            "prerequisites": "Understanding of velocity concepts",
+            "id": 2.5,
+            "context": "Relative velocity is the velocity of an object as observed from another object or reference frame that may itself be moving.",
+            "questions": [
+              {
+                "question": "What is relative velocity?",
+                "answer": "Relative velocity is the velocity of an object as measured from a reference frame that may itself be in motion."
+              },
+              {
+                "question": "How do you find relative velocity between two objects?",
+                "answer": "Relative velocity is found by vector subtraction of the velocities: v₁₂ = v₁ - v₂, where v₁₂ is the velocity of object 1 relative to object 2."
+              },
+              {
+                "question": "Why is relative velocity important?",
+                "answer": "Relative velocity is important because motion is always measured relative to some reference frame, and different observers in different reference frames may measure different velocities for the same object."
+              },
+              {
+                "question": "Give an example of relative velocity in everyday life.",
+                "answer": "A passenger walking in a moving train: their velocity relative to the train is different from their velocity relative to the ground."
+              },
+              {
+                "question": "Does relative velocity affect collision speeds?",
+                "answer": "Yes, the impact speed in a collision depends on the relative velocity between the colliding objects, not their individual velocities relative to the ground."
+              },
+              {
+                "question": "How does relative velocity relate to frame of reference?",
+                "answer": "Relative velocity demonstrates that motion is frame-dependent - the same motion can be described differently by observers in different reference frames."
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
