@@ -102,6 +102,11 @@ ${topic.context}
 - Use **bold** and *italic* texts for emphasis
 - Offer more insight than typical short responses
 
+Limit your entire explanation to **two paragraphs** maximum. Provide a concise but clear overview.
+If the student asks for more details later, you can expand further.
+
+
+
 ### Recent Chat:
 ${history.map(h => `Student: ${h.user}\nTeacher: ${h.ai}`).join('\n\n')}
 
